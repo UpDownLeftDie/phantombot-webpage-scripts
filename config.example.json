@@ -1,0 +1,6 @@
+{
+	"outputFolder": "",
+	"port": 25000,
+	"url": "localhost",
+	"webauth": "WEBAUTH_TOKEN"
+}
