@@ -21,6 +21,7 @@ function getTemplateFile($config)
         $port = ":{$config->port}";
     }
     $template = str_replace('$url', '$url' . " = '{$config->url}${port}'", $coreTemplate);
+    $template = str_replace('$protocol = \'http\'', '$protocol' . " = '{$config->protocol}'", $template);
     $template = str_replace('$outputFolder', '$outputFolder' . " = '{$config->outputFolder}'", $template);
     $template = str_replace('$webauth', $config->webauth, $template);
 
@@ -31,12 +32,12 @@ function compileTemplates($argv, $template)
 {
     $modules = "";
     foreach (array_slice($argv, 1) as $module) {
-			if ($module === "") {
-				echo "Invalid module supplied";
-				break;
-			} else {
-				$modules .= file_get_contents("modules/{$module}/curl.php", null, null, 6) . "\n\n";
-			}
+        if ($module === "") {
+            echo "Invalid module supplied";
+            break;
+        } else {
+            $modules .= file_get_contents("modules/{$module}/curl.php", null, null, 6) . "\n\n";
+        }
     }
 
     return str_replace("//scripts-here", $modules, $template);
@@ -44,7 +45,10 @@ function compileTemplates($argv, $template)
 
 function outputCronFile($txt)
 {
-    $file = fopen("phantombot-cron.php", "w");
+    if (!file_exists('output')) {
+        mkdir('output', 0777, true);
+    }
+    $file = fopen("output/phantombot-cron.php", "w");
     fwrite($file, $txt);
     fclose($file);
 }
