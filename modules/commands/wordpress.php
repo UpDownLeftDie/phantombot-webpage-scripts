@@ -2,7 +2,7 @@
     // get commands from file
     $filename = "${outputFolder}commands.json";
 		$fp = file_get_contents($filename);
-    $commands = json_decode($fp);
+    $commands = json_decode($fp)->table->results;
 ?>
 <table>
 	<tr>
@@ -10,10 +10,10 @@
 		<th>Output</th>
 	</tr>
 	<?php
-		foreach($commands as $key => $command) {
+		foreach($commands as $command) {
 			echo '
 				<tr>
-				<td><strong>!' . $key . '</strong>:</td><td>{$command}</td>
+				<td><strong>!' . $command->key . '</strong></td><td>' . $command->value . '</td>
 				</tr>
 			';
 		}

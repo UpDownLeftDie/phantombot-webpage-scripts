@@ -2,7 +2,13 @@
     // get time from file
     $filename = "${outputFolder}top-100-time.json";
     $fp = file_get_contents($filename);
-    $time = json_decode($fp);
+    $times = json_decode($fp)->table->results;
+
+		function secondsToTime($seconds) {
+			$dtF = new \DateTime('@0');
+			$dtT = new \DateTime("@$seconds");
+			return $dtF->diff($dtT)->format('%a days, %h hours, %i minutes');
+		}
 ?>
 <table>
 	<tr>
@@ -12,15 +18,20 @@
 	</tr>
 	<?php
         $rank = 1;
-        foreach ($time as $user => $userTime) {
+				$blacklist = []; // string array of names you don't want ranked publicly
+        foreach ($times as $time) {
             if ($rank > 100) {
                 break;
             }
+						if(in_array($time, $blacklist)) {
+							continue;
+						}
+						$convertedTime = secondsToTime($time->value);
             echo '
 							<tr>
 								<td>#' . $rank . '</td>
-								<td>' . $user . '</td>
-								<td>' . $userTime . '</td>
+								<td>' . $time->key . '</td>
+								<td>' . $convertedTime . '</td>
 							</tr>
 						';
             $rank++;

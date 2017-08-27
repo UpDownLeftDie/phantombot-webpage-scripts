@@ -2,7 +2,7 @@
     // get points from file
     $filename = "${outputFolder}top-100-points.json";
     $fp = file_get_contents($filename);
-    $points = json_decode($fp);
+    $points = json_decode($fp)->table->results
 ?>
 <table>
 	<tr>
@@ -12,15 +12,15 @@
 	</tr>
 	<?php
         $rank = 1;
-        foreach ($points as $user => $userPoints) {
+        foreach ($points as $userPoints) {
             if ($rank > 100) {
                 break;
             }
             echo '
 							<tr>
 								<td>#' . $rank . '</td>
-								<td>' . $user . '</td>
-								<td>' . $userPoints . '</td>
+								<td>' . $userPoints->key . '</td>
+								<td>' . $userPoints->value . '</td>
 							</tr>
 						';
             $rank++;

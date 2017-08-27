@@ -1,5 +1,6 @@
 ## Requirements
 php
+Phantombot 2.3.8 or higher
 
 ## Step 1
 ### Create a confg file
@@ -17,3 +18,7 @@ Example:
 ### Move phantombot-cron file to your server
 Move or run `phantombot-cron.php` to your server
 When this is ran it will output json files to the location you setup in `config.json`
+
+## Step 4
+### Wordpress integration
+If youre using wordpress you can
