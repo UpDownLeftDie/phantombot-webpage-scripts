@@ -12,10 +12,14 @@
 	</tr>
 	<?php
         $rank = 1;
+				$blacklist = []; // string array of names you don't want ranked publicly
         foreach ($points as $userPoints) {
             if ($rank > 100) {
                 break;
             }
+						if(in_array($time->key, $blacklist)) {
+							continue;
+						}
             echo '
 							<tr>
 								<td>#' . $rank . '</td>

@@ -23,7 +23,7 @@
             if ($rank > 100) {
                 break;
             }
-						if(in_array($time, $blacklist)) {
+						if(in_array($time->key, $blacklist)) {
 							continue;
 						}
 						$convertedTime = secondsToTime($time->value);
