@@ -1,6 +1,6 @@
 <?php
     // Top-100-Time
-		$name = "top-100-time";
+    $name = "top-100-time";
     curl_setopt($curl, CURLOPT_URL, "${protocol}://${url}/dbquery?table=time&getSortedRowsByValue&order=DESC");
     $results = curl_exec($curl);
 

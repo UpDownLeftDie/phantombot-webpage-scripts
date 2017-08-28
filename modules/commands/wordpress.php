@@ -1,8 +1,8 @@
 <?php
     // get commands from file
     $filename = "${outputFolder}commands.json";
-		$fp = file_get_contents($filename);
-    $commands = json_decode($fp)->table->results;
+    $fp = file_get_contents($filename);
+    $botCommands = json_decode($fp)->table->results;
 ?>
 <table>
 	<tr>
@@ -10,13 +10,15 @@
 		<th>Output</th>
 	</tr>
 	<?php
-		foreach($commands as $command) {
-			echo '
-				<tr>
-				<td><strong>!' . $command->key . '</strong></td><td>' . $command->value . '</td>
-				</tr>
-			';
-		}
+    foreach ($botCommands as $botCommand) {
+        $command = $botCommand->key;
+        $output = $botCommand->value;
+        echo '
+					<tr>
+						<td><strong>!' . $command . '</strong></td><td>' . $output . '</td>
+					</tr>
+				';
+    }
 
 echo "</table>";
 // update when the json was written

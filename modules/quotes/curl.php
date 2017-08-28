@@ -1,6 +1,6 @@
 <?php
     // Quotes
-		$name = "quotes";
+    $name = "quotes";
     curl_setopt($curl, CURLOPT_URL, "${protocol}://${url}/dbquery?table=quotes&getSortedRows&order=ASC");
     $results = curl_exec($curl);
 

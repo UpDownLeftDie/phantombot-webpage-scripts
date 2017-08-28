@@ -1,7 +1,7 @@
 <?php
     // Top-100-Points
-		$name = "top-100-points";
-    curl_setopt($curl, CURLOPT_URL, "${protocol}://${url}/dbquery?table=points&getKeys");
+    $name = "top-100-points";
+    curl_setopt($curl, CURLOPT_URL, "${protocol}://${url}/dbquery?table=points&getSortedRowsByValue&order=DESC");
     $results = curl_exec($curl);
 
     // write to a file

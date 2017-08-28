@@ -2,7 +2,7 @@
     // get points from file
     $filename = "${outputFolder}top-100-points.json";
     $fp = file_get_contents($filename);
-    $points = json_decode($fp)->table->results
+    $usersPoints = json_decode($fp)->table->results
 ?>
 <table>
 	<tr>
@@ -12,19 +12,21 @@
 	</tr>
 	<?php
         $rank = 1;
-				$blacklist = []; // string array of names you don't want ranked publicly
-        foreach ($points as $userPoints) {
+        $blacklist = []; // string array of names you don't want ranked publicly
+        foreach ($usersPoints as $userPoints) {
+            $user = $userPoints->key;
+            $points = $userPoints->value;
             if ($rank > 100) {
                 break;
             }
-						if(in_array($time->key, $blacklist)) {
-							continue;
-						}
+            if (in_array($user, $blacklist) || $points < 1) {
+                continue;
+            }
             echo '
 							<tr>
 								<td>#' . $rank . '</td>
-								<td>' . $userPoints->key . '</td>
-								<td>' . $userPoints->value . '</td>
+								<td>' . $user . '</td>
+								<td>' . $points . '</td>
 							</tr>
 						';
             $rank++;

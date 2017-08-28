@@ -1,24 +1,30 @@
-## Requirements
-php  
-Phantombot 2.3.8 or higher  
+# Requirements
 
-## Step 1
-### Create a confg file
-Rename `config.example.json` to `config.json`  
-Change the values based on your setup  
+Phantombot 2.3.8 or higher<br>
+php
 
-## Step 2
-### Genreate a custom cron file
-`php generate [module names]`  
-Module names are the names of the folders in `modules`  
-Example:  
-`php generate commands quotes top-100-points`  
+# Step 1
 
-## Step 3
-### Move phantombot-cron file to your server
-Move or run `phantombot-cron.php` to your server  
-When this is ran it will output json files to the location you setup in `config.json`  
+## Create a confg file
 
-## Step 4
-### Wordpress integration
-If youre using wordpress you can copy and paste everything below the first `<?php` tag from the `wordpress.php` files into template pages files right below `content();`  
+Rename `config.example.json` to `config.json`<br>
+Change the values based on your setup
+
+# Step 2
+
+## Genreate a custom cron file
+
+`php generate [module names]`<br>
+Module names are the names of the folders in `modules`<br>
+Example: `php generate commands quotes top-100-points`
+
+# Step 3
+
+## Move phantombot-cron file to your server
+
+Move or run `phantombot-cron.php` to your server<br>
+When this is ran it will output json files to the location you setup in `config.json`
+
+# Step 4
+
+## Wordpress integration
