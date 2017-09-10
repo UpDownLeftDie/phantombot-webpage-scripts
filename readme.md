@@ -28,3 +28,9 @@ When this is ran it will output json files to the location you setup in `config.
 # Step 4
 
 ## Wordpress integration
+
+Make a new wordpress page template (google it)<br>
+Copy content from `wordpress.php`<br>
+Paste into new page template (I like to put it below the `content` load block<br>
+Update the `$filename` variable to point to the correct folder<br>
+In Wordpress make a new page and use the new template
