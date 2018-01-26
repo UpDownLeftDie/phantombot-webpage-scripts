@@ -1,6 +1,6 @@
 <?php
     // get quotes from file
-    $filename = "${outputFolder}points.json";
+    $filename = "${outputFolder}quotes.json";
     $fp = file_get_contents($filename);
     $botQuotes = json_decode($fp)->table->results;
 
