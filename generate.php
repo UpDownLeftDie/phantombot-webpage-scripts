@@ -4,8 +4,8 @@
         } else {
             $config = loadConfig();
             $template = getTemplateFile($config);
-            $output = compileTemplates($argv, $template);
-            outputCronFile($output);
+            $output = combineTemplates($argv, $template);
+            outputCronFile($config->outputFolder, $output);
         }
 
 function loadConfig()
@@ -28,7 +28,7 @@ function getTemplateFile($config)
     return $template;
 }
 
-function compileTemplates($argv, $template)
+function combineTemplates($argv, $template)
 {
     $modules = "";
     foreach (array_slice($argv, 1) as $module) {
@@ -43,12 +43,13 @@ function compileTemplates($argv, $template)
     return str_replace("//scripts-here", $modules, $template);
 }
 
-function outputCronFile($txt)
+function outputCronFile($outputFolder, $txt)
 {
-    if (!file_exists('output')) {
-        mkdir('output', 0777, true);
+    if (!file_exists($outputFolder)) {
+        mkdir($outputFolder, 0777, true);
     }
-    $file = fopen("output/phantombot-cron.php", "w");
+    $file = fopen("{$outputFolder}/phantombot-cron.php", "w");
     fwrite($file, $txt);
     fclose($file);
+    echo "Succesfully created: {$outputFolder}/phantombot-cron.php";
 }

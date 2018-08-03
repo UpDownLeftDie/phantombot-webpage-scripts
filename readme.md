@@ -10,13 +10,19 @@ php
 Rename `config.example.json` to `config.json`<br>
 Change the values based on your setup
 
+-   **outputFolder**: this is the folder that phantombot-cron.php is placed after being generated in step 2 and where outputs from the cron will be stored.
+-   **port**: PhantomBot's base port.
+-   **protocol**: the protocal used to talk to PhantomBot.
+-   **url**: the url to PhantomBot.
+-   **webauth**: the webauth token for PhantomBot found in `botlogin.txt`
+
 # Step 2
 
 ## Genreate a custom cron file
 
-`php generate [module names]`<br>
+`php generate.php [module names]`<br>
 Module names are the names of the folders in `modules`<br>
-Example: `php generate commands quotes top-100-points`
+Example: `php generate.php commands quotes top-100-points`
 
 # Step 3
 
