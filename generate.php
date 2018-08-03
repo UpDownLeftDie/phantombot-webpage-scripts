@@ -20,9 +20,13 @@ function getTemplateFile($config)
     if ($config->port) {
         $port = ":{$config->port}";
     }
+    $outputFolder = $config->outputFolder;
+    if (substr($string, -1) != "/") {
+        $outputFolder = "{$outputFolder}/";
+    }
     $template = str_replace('$url', '$url' . " = '{$config->url}${port}'", $coreTemplate);
     $template = str_replace('$protocol = \'http\'', '$protocol' . " = '{$config->protocol}'", $template);
-    $template = str_replace('$outputFolder', '$outputFolder' . " = '{$config->outputFolder}'", $template);
+    $template = str_replace('$outputFolder;', '$outputFolder' . " = '{$outputFolder}';", $template);
     $template = str_replace('$webauth', $config->webauth, $template);
 
     return $template;

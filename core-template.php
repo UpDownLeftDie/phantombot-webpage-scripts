@@ -1,7 +1,10 @@
 <?php
     $url;
     $outputFolder;
-        $protocol = 'http';
+    if (substr($outputFolder, -1) == basename(__DIR__)) {
+        $outputFolder = '';
+    }
+    $protocol = 'http';
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_HTTPHEADER, array(
         'webauth: $webauth'
