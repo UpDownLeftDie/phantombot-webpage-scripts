@@ -21,7 +21,7 @@ function getTemplateFile($config)
         $port = ":{$config->port}";
     }
     $outputFolder = $config->outputFolder;
-    if (substr($string, -1) != "/") {
+    if (substr($outputFolder, -1) != "/") {
         $outputFolder = "{$outputFolder}/";
     }
     $template = str_replace('$url', '$url' . " = '{$config->url}${port}'", $coreTemplate);
