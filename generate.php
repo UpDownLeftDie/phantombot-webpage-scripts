@@ -53,7 +53,10 @@ function outputCronFile($outputFolder, $txt)
         mkdir($outputFolder, 0777, true);
     }
     $file = fopen("{$outputFolder}/phantombot-cron.php", "w");
-    fwrite($file, $txt);
+    if (fwrite($file, $txt) != false) {
+        echo "Succesfully created: {$outputFolder}/phantombot-cron.php";
+    } else {
+        echo "There was a problem generating phantombot-cron.php cron file.";
+    }
     fclose($file);
-    echo "Succesfully created: {$outputFolder}/phantombot-cron.php";
 }

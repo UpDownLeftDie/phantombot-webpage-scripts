@@ -1,7 +1,7 @@
 <?php
     $url;
     $outputFolder;
-    if (substr($outputFolder, -1) == basename(__DIR__)) {
+    if (substr($outputFolder, 0, -1) == basename(__DIR__)) {
         $outputFolder = '';
     }
     $protocol = 'http';
